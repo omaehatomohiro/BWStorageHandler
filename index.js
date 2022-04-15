@@ -11,23 +11,23 @@ var BWStorageHandler = (function(){
     }
 
     var getItem = function(key){
-        var val = '';
+        var val = null;
         val = localStorage.getItem(key);
-        if( val !== '' ){
+        if( val !== null && val !== ''){
             return val;
         }
         val = sessionStorage.getItem(key);
-        if( val !== '' ){
+        if( val !== null && val !== '' ){
             return val;
         }
         var cookies = document.cookie.split('; ');
         for(var i=0,len=cookies.length;i<len;i++){
             var cookie = cookies[i].split('=');
-            console.log(cookie);
             if(cookie[0] === key){
                 return cookie[1];
             }
         }
+        return null;
     }
 
     return {
