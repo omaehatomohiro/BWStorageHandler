@@ -4,7 +4,7 @@ var BWStorageHandler = (function(){
         localStorage.setItem(key, value);
         sessionStorage.setItem(key, value);
         var cookieString = key + "=" + value + ";path=/;SameSite=None;secure;";
-        if(hour != null && typeof hour === "number"){
+        if(typeof hour === "number"){
             cookieString += ";max-age=" + hour * 60 * 60;
         }
         document.cookie = cookieString;
